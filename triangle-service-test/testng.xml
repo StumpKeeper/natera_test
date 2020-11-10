@@ -1,9 +1,14 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="Triangle Service API Suite" verbose="1">
-    <test name="All" parallel="methods" thread-count="10">
+    <test name="Unit" parallel="classes" thread-count="10">
         <packages>
-            <package name="com.natera.qa.*"/>
+            <package name="com.natera.qa.unit.*"/>
+        </packages>
+    </test>
+    <test name="Functional">
+        <packages>
+            <package name="com.natera.qa.triangle.*"/>
         </packages>
     </test>
 </suite>
