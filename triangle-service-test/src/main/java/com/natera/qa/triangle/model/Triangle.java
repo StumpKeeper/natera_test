@@ -36,7 +36,7 @@ public class Triangle {
     }
 
     @JsonIgnore
-    public boolean valid() {
+    public boolean isValid() {
         return (firstSide + secondSide) > thirdSide &&
                 (secondSide + thirdSide) > firstSide &&
                 (firstSide + thirdSide) > secondSide;

@@ -11,13 +11,13 @@ public class TriangleTest {
         Triangle validTriangle = Triangle.builder().firstSide(10.5).secondSide(12.3).thirdSide(21.3).build();
         Triangle invalidTriangle = Triangle.builder().firstSide(10.5).secondSide(20.3).thirdSide(40.1).build();
 
-        Assert.assertTrue(validTriangle.valid());
-        Assert.assertFalse(invalidTriangle.valid());
+        Assert.assertTrue(validTriangle.isValid());
+        Assert.assertFalse(invalidTriangle.isValid());
     }
 
     @Test
     public void checkValidTriangleGeneration() {
-        Assert.assertTrue(Triangle.randomValid().valid());
+        Assert.assertTrue(Triangle.randomValid().isValid());
     }
 
     @Test
