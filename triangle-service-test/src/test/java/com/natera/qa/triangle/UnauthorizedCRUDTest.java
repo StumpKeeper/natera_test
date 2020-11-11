@@ -23,6 +23,19 @@ public class UnauthorizedCRUDTest {
                 .statusCode(401);
     }
 
+    @Test
+    public void checkCreateTriangleUnauthorizedFakeToken() {
+        Triangle validTriangle = Triangle.randomValid();
+        RestAssured
+                .given()
+                .header("X-User", UUID.randomUUID().toString())
+                .contentType(ContentType.JSON)
+                .body(validTriangle)
+                .post(TriangleService.BASE_URL)
+                .then()
+                .statusCode(401);
+    }
+
     @Test(dataProvider = "getEndpointProvider")
     public void checkGetTriangleUnauthorized(String endpoint) {
         RestAssured
@@ -33,10 +46,32 @@ public class UnauthorizedCRUDTest {
                 .statusCode(401);
     }
 
+    @Test(dataProvider = "getEndpointProvider")
+    public void checkGetTriangleUnauthorizedFakeToken(String endpoint) {
+        RestAssured
+                .given()
+                .header("X-User", UUID.randomUUID().toString())
+                .baseUri(TriangleService.BASE_URL)
+                .get(endpoint)
+                .then()
+                .statusCode(401);
+    }
+
     @Test
     public void checkDeleteTriangleUnauthorized() {
         RestAssured
                 .given()
+                .baseUri(TriangleService.BASE_URL)
+                .delete(UUID.randomUUID().toString())
+                .then()
+                .statusCode(401);
+    }
+
+    @Test
+    public void checkDeleteTriangleUnauthorizedFakeToken() {
+        RestAssured
+                .given()
+                .header("X-User", UUID.randomUUID().toString())
                 .baseUri(TriangleService.BASE_URL)
                 .delete(UUID.randomUUID().toString())
                 .then()
