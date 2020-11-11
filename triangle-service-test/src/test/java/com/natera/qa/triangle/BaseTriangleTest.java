@@ -2,17 +2,14 @@ package com.natera.qa.triangle;
 
 import com.natera.qa.triangle.service.TriangleService;
 import org.testng.Assert;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeMethod;
 
-public class BaseTriangleTest {
+class BaseTriangleTest {
 
-    @BeforeSuite
+    @BeforeMethod
     public void cleanDb() {
         //TODO Could be replaced with direct table drop to remove dependency from API logic
-        TriangleService
-                .getAllTriangles()
-                .forEach(triangle -> TriangleService.deleteTriangle(triangle.getId()));
-
+        TriangleService.deleteAllTriangles();
         Assert.assertTrue(TriangleService.getAllTriangles().isEmpty(), "BeforeSuite - DB cleanup failed...");
     }
 
