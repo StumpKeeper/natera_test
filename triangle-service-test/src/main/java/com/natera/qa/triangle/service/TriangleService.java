@@ -14,6 +14,7 @@ import java.util.UUID;
 public class TriangleService {
 
     public static final String BASE_URL = "https://qa-quiz.natera.com/triangle/";
+    public static final String DEFAULT_SEPARATOR = ";";
     public static final int MAXIMUM_TRIANGLE_AMOUNT = 10;
     private static final String DEFAULT_USER_TOKEN = "2f8c29ff-110f-4b7b-acb0-9fe53ddda592";
 
