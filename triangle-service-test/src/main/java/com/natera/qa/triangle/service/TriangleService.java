@@ -47,6 +47,15 @@ public class TriangleService {
                 .as(Triangle.class);
     }
 
+    public static ValidatableResponse getTriangle(UUID id, int expectedStatus) {
+        return RestAssured
+                .given()
+                .spec(getAuthorizedRequestSpec())
+                .get(id.toString())
+                .then()
+                .statusCode(expectedStatus);
+    }
+
     public static Double getTriangleArea(UUID id) {
         return RestAssured
                 .given()
