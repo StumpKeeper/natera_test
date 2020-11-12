@@ -105,6 +105,17 @@ public class TriangleService {
                 .statusCode(expectedStatus);
     }
 
+    public static ValidatableResponse createTriangle(TriangleInput triangleInput, int expectedStatus) {
+        return RestAssured
+                .given()
+                .spec(getAuthorizedRequestSpec())
+                .contentType(ContentType.JSON)
+                .body(triangleInput)
+                .post()
+                .then()
+                .statusCode(expectedStatus);
+    }
+
     public static boolean deleteTriangle(UUID id) {
         int responseStatus = RestAssured
                 .given()
